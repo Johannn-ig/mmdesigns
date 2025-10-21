@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>MM Designs — Gifts & Sets</title>
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="gifts.css" />
+  </head>
+  <body>
+    <header class="nav">
+      <div class="container nav-inner">
+        <a class="logo" href="index.html">MM Designs</a>
+        <nav class="menu">
+          <a href="index.html">Featured</a>
+          <a href="categories.html">Categories</a>
+          <a href="home.html#most-liked">Most liked</a>
+          <a href="login.html" class="login-link">Sign in</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="featured">
+        <div class="container hero-inner">
+          <div class="hero-copy">
+            <h1>Gifts & Sets</h1>
+            <p>Carefully curated gift sets and accessories — perfect for birthdays, anniversaries, and special occasions.</p>
+          </div>
+          <div class="hero-image">
+            <img src="https://via.placeholder.com/560x360?text=Gifts+%26+Sets" alt="Gifts & Sets" />
+          </div>
+        </div>
+      </section>
+    </main>
+    <section class="grid">
+        <div class="container">
+          <h2>Gift Sets</h2>
+          <div class="products">
+            <article class="product">
+              <img src="https://via.placeholder.com/300x220?text=Gift+Set+1" alt="Gift Set 1" />
+              <h3>Leather Starter Set</h3>
+              <p class="price">$99</p>
+              <p class="desc">Wallet + keychain in a gift box.</p>
+              <a class="btn-secondary" href="#">View</a>
+            </article>
+
+            <article class="product">
+              <img src="https://via.placeholder.com/300x220?text=Gift+Set+2" alt="Gift Set 2" />
+              <h3>Travel Kit</h3>
+              <p class="price">$129</p>
+              <p class="desc">Travel wallet and passport sleeve.</p>
+              <a class="btn-secondary" href="#">View</a>
+            </article>
+
+            <article class="product">
+              <img src="https://via.placeholder.com/300x220?text=Gift+Set+3" alt="Gift Set 3" />
+              <h3>Deluxe Gift Box</h3>
+              <p class="price">$149</p>
+              <p class="desc">Premium selection with wrapping and note card.</p>
+              <a class="btn-secondary" href="#">View</a>
+            </article>
+
+            <article class="product">
+              <img src="https://via.placeholder.com/300x220?text=Gift+Set+4" alt="Gift Set 4" />
+              <h3>Accessory Pair</h3>
+              <p class="price">$79</p>
+              <p class="desc">Keychain + card case set in gift box.</p>
+              <a class="btn-secondary" href="#">View</a>
+            </article>
+
+            <article class="product">
+              <img src="https://via.placeholder.com/300x220?text=Gift+Set+5" alt="Gift Set 5" />
+              <h3>Travel Essentials</h3>
+              <p class="price">$119</p>
+              <p class="desc">Passport sleeve, luggage tag and cardholder.</p>
+              <a class="btn-secondary" href="#">View</a>
+            </article>
+
+            <article class="product">
+              <img src="https://via.placeholder.com/300x220?text=Gift+Set+6" alt="Gift Set 6" />
+              <h3>Minimal Gift Set</h3>
+              <p class="price">$89</p>
+              <p class="desc">Slim wallet and sleek card holder.</p>
+              <a class="btn-secondary" href="#">View</a>
+            </article>
+
+            <article class="product">
+              <img src="https://via.placeholder.com/300x220?text=Gift+Set+7" alt="Gift Set 7" />
+              <h3>Executive Box</h3>
+              <p class="price">$179</p>
+              <p class="desc">Luxury set with premium stitching and finish.</p>
+              <a class="btn-secondary" href="#">View</a>
+            </article>
+
+            <article class="product">
+              <img src="https://via.placeholder.com/300x220?text=Gift+Set+8" alt="Gift Set 8" />
+              <h3>Deluxe Travel Pack</h3>
+              <p class="price">$199</p>
+              <p class="desc">Everything needed for organized travel.</p>
+              <a class="btn-secondary" href="#">View</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© MM Designs — Handcrafted goods</p>
+      </div>
+    </footer>
+  <script>
+    (function(){
+      const header = document.querySelector('.nav');
+      if(!header) return;
+      let ticking = false;
+      const threshold = 20;
+      function onScroll(){
+        if(!ticking){
+          window.requestAnimationFrame(()=>{
+            if(window.scrollY > threshold){
+              header.classList.add('scrolled');
+            } else {
+              header.classList.remove('scrolled');
+            }
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }
+      window.addEventListener('scroll', onScroll, {passive:true});
+      onScroll();
+    })();
+  </script>
+  </body>
+</html>

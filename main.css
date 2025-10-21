@@ -1,0 +1,132 @@
+:root{
+	--bg:#faf7ff;
+	--accent-1:#6d4cff;
+	--accent-2:#a992ff;
+	--muted:#6b6b7a;
+	--card:#fff;
+	--maxw:1200px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial}
+
+.container{width:92%;max-width:var(--maxw);margin:0 auto}
+main{background:linear-gradient(180deg,var(--bg),#f1ebff 60%);color:#222}
+footer{background:#000;color:#fff}
+/* NAV */
+.nav{background:transparent;padding:18px 0;position:sticky;top:0;z-index:60;transition:background-color 200ms ease, box-shadow 200ms ease, backdrop-filter 200ms ease}
+.nav.scrolled{background-color:rgba(255,255,255,0.88);box-shadow:0 6px 18px rgba(33,24,64,0.08);backdrop-filter:blur(6px)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:700;color:var(--accent-1);text-decoration:none;font-size:20px}
+.menu a{margin-left:18px;color:#333;text-decoration:none}
+.menu .login-link{padding:8px 12px;border-radius:8px;border:1px solid rgba(109,76,255,0.12);color:var(--accent-1)}
+
+/* HERO */
+.hero{padding:48px 0}
+.hero-inner{display:flex;gap:40px;align-items:center}
+.hero-copy{flex:1}
+.hero-copy h1{font-size:38px;margin:0 0 12px;color:#2b2540}
+.hero-copy p{color:var(--muted);margin:0 0 18px}
+.btn-primary{display:inline-block;padding:12px 18px;border-radius:10px;background:linear-gradient(90deg,var(--accent-1),var(--accent-2));color:#fff;text-decoration:none;font-weight:600}
+
+.hero-products{width:360px;display:flex;flex-direction:column;gap:14px;position:relative}
+.prod-card{background:var(--card);border-radius:12px;padding:10px;box-shadow:0 8px 30px rgba(80,60,120,0.06);display:flex;flex-direction:column;align-items:center}
+.prod-card img{width:160px;height:120px;object-fit:cover;border-radius:8px}
+.prod-card .meta{display:flex;justify-content:space-between;width:100%;padding-top:8px;color:#333}
+
+/* Floating animation (optional; only elements with .floating use this) */
+.floating{transform:translateY(0);animation:float 6s ease-in-out infinite}
+.floating:nth-child(1){animation-delay:0.1s}
+.floating:nth-child(2){animation-delay:0.35s}
+.floating:nth-child(3){animation-delay:0.6s}
+@keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-12px)}100%{transform:translateY(0)}}
+
+/* categories */
+.categories{padding:40px 0;margin-top:56px}
+.categories h2{text-align:center;margin-bottom:18px}
+.cats{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.cat{background:linear-gradient(90deg,#fff,#fbf9ff);padding:14px 20px;border-radius:12px;text-decoration:none;color:#2b2540;border:1px solid rgba(109,76,255,0.08)}
+
+/* products grid */
+.grid{padding:40px 0}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.product{background:var(--card);padding:12px;border-radius:12px;box-shadow:0 8px 18px rgba(99,84,255,0.06);text-align:center}
+.product img{width:100%;height:180px;object-fit:cover;border-radius:8px}
+.product h3{font-size:16px;margin:10px 0}
+.price{color:var(--accent-1);font-weight:700;margin-bottom:8px}
+.btn-secondary{display:inline-block;padding:8px 12px;border-radius:8px;background:transparent;border:1px solid rgba(109,76,255,0.12);color:var(--accent-1);text-decoration:none}
+
+/* Slider / marquee for Most liked section */
+.slider{overflow:hidden;position:relative;padding:18px 0}
+.slider .track{display:flex;gap:18px;align-items:stretch;white-space:nowrap;animation:slide-left 24s linear infinite}
+.slider .product{min-width:260px;flex:0 0 auto}
+
+@keyframes slide-left{
+	0%{transform:translateX(0)}
+	100%{transform:translateX(-50%)}
+}
+
+/* Accessibility: stop animation if user prefers reduced motion */
+@media (prefers-reduced-motion: reduce){
+	.slider .track{animation:none}
+}
+
+/* Make the slider slower on small screens */
+@media (max-width:980px){
+	.slider .track{animation-duration:36s}
+}
+
+/* Hover interactions: pause, enlarge hovered card, show description, blur siblings */
+@media (pointer: fine) {
+	/* pause when hovering the slider or the most-liked area */
+	#most-liked:hover .slider .track,
+	.slider:hover .track{animation-play-state:paused}
+
+	/* per-product hover: enlarge hovered product, bring to front */
+	.product{transition:transform 220ms ease, box-shadow 220ms ease, filter 220ms ease, opacity 220ms ease}
+	.slider .product:hover{transform:scale(1.08);z-index:30;box-shadow:0 18px 36px rgba(33,24,64,0.12)}
+
+	/* reveal description: limit to ~3 lines with a smooth opacity/translate */
+	.product .desc{max-height:0;opacity:0;overflow:hidden;transition:opacity 220ms ease,max-height 220ms ease,transform 220ms ease;transform:translateY(6px);margin:8px 0 0;color:var(--muted)}
+	.slider .product:hover .desc{max-height:4.6em;opacity:1;transform:translateY(0)}
+
+	/* Blur only when a product is hovered: use :has if supported; fallback to slider:hover */
+	.slider:has(.product:hover) .product:not(:hover),
+	.slider:hover .product:not(:hover){filter:blur(4px) saturate(0.95);opacity:0.82}
+
+	/* keep hovered product sharp */
+	.slider .product:hover{filter:none;opacity:1}
+}
+
+/* Respect reduced motion: don't animate sliding or scale effects */
+@media (prefers-reduced-motion: reduce){
+	.slider .track{animation:none}
+	.product, .product img{transition:none}
+}
+
+/* footer */
+.site-footer{padding:28px 0;text-align:center;background:#000;color:#fff}
+.site-footer a{color:#fff;text-decoration:underline}
+
+/* Responsive */
+@media (max-width:980px){
+	.hero-inner{flex-direction:column-reverse}
+	.hero-products{width:100%;display:flex;flex-direction:row;justify-content:space-between}
+	.products{grid-template-columns:repeat(2,1fr)}
+}
+
+@media (max-width:520px){
+	.menu a{display:none}
+	.menu .login-link{display:inline-block}
+	.hero-copy h1{font-size:26px}
+	.products{grid-template-columns:1fr}
+
+	/* Mobile slider behavior: disable automatic sliding and make it swipeable */
+	.slider .track{animation:none;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:6px}
+	.slider .product{min-width:88%;flex:0 0 88%;scroll-snap-align:center}
+	/* remove hover/scale and blur effects on touch devices */
+	.slider .product{transition:none}
+	.slider .product:hover{transform:none;box-shadow:0 8px 18px rgba(99,84,255,0.06)}
+	.slider .product .desc{display:none}
+	.slider:hover .track{animation-play-state:paused}
+}

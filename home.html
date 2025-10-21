@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>MM Designs — Wallets & Accessories</title>
+        <link rel="stylesheet" href="main.css" />
+    </head>
+    <body>
+        <header class="nav">
+            <div class="container nav-inner">
+                <a class="logo" href="index.html">MM Designs</a>
+                <nav class="menu">
+                    <a href="#featured">Featured</a>
+                    <a href="#categories">Categories</a>
+                    <a href="#most-liked">Most liked</a>
+                    <a href="login.html" class="login-link">Sign in</a>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero" id="featured">
+                <div class="container hero-inner">
+                    <div class="hero-copy">
+                        <h1>Timeless wallets. Thoughtful design.</h1>
+                        <p>Quality leather wallets, women's purses, and card cases. Curated styles for everyday carry.</p>
+                        <a href="#categories" class="btn-primary">Shop Collections</a>
+                    </div>
+
+                    <div class="hero-products">̥
+                        <!-- Floating product cards (placeholders) -->
+                        <div class="prod-card" style="--i:0">
+                            <img src="https://via.placeholder.com/160x120?text=Men+Wallet+1" alt="Men wallet 1" />
+                            <div class="meta"><strong>Classic Wallet</strong><span>$39</span></div>
+                        </div>
+
+                        <div class="prod-card" style="--i:1">
+                            <img src="https://via.placeholder.com/160x120?text=Slim+Wallet" alt="Slim wallet" />
+                            <div class="meta"><strong>Slim Wallet</strong><span>$29</span></div>
+                        </div>̥
+
+                        <div class="prod-card" style="--i:2">
+                            <img src="https://via.placeholder.com/160x120?text=Card+Case" alt="Card case" />
+                            <div class="meta"><strong>Card Case</strong><span>$19</span></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- categories and most-liked moved below main to separate them from the main content -->
+        </main>
+
+        <section class="categories" id="categories">
+            <div class="container">
+                <h2>Shop by category</h2>
+                <div class="cats">
+                    <a class="cat" href="mens_wallet.html">Men's Wallets</a>
+                    <a class="cat" href="ladies_wallet.html">Women's Purses</a>
+                    <a class="cat" href="#">Card Cases</a>
+                    <a class="cat" href="gifts.html">Gifts & Sets</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="grid most-liked-section" id="most-liked">
+            <div class="container">
+                <h2>Most liked</h2>
+                <!-- Slider: a horizontally scrolling track that loops -->
+                <div class="slider" aria-hidden="false">
+                    <div class="track">
+                        <!-- original items -->
+                        <article class="product">
+                            <img src="https://via.placeholder.com/300x220?text=Wallet+A" alt="Wallet A" />
+                            <h3>Everyday Leather Wallet</h3>
+                            <p class="price">$49</p>
+                            <a class="btn-secondary" href="#">View</a>
+                        </article>
+
+                        <article class="product">
+                            <img src="https://via.placeholder.com/300x220?text=Wallet+B" alt="Wallet B" />
+                            <h3>Slim Minimalist</h3>
+                            <p class="price">$34</p>
+                            <a class="btn-secondary" href="#">View</a>
+                        </article>
+
+                        <article class="product">
+                            <img src="https://via.placeholder.com/300x220?text=Purse+C" alt="Purse C" />
+                            <h3>Elegant Purse</h3>
+                            <p class="price">$79</p>
+                            <a class="btn-secondary" href="#">View</a>
+                        </article>
+
+                        <article class="product">
+                            <img src="https://via.placeholder.com/300x220?text=Card+Case+D" alt="Card Case D" />
+                            <h3>Compact Card Case</h3>
+                            <p class="price">$24</p>
+                            <a class="btn-secondary" href="#">View</a>
+                        </article>
+
+                        <!-- duplicated items for seamless loop -->
+                        <article class="product">
+                            <img src="https://via.placeholder.com/300x220?text=Wallet+A" alt="Wallet A" />
+                            <h3>Everyday Leather Wallet</h3>
+                            <p class="price">$49</p>
+                            <a class="btn-secondary" href="#">View</a>
+                        </article>
+
+                        <article class="product">
+                            <img src="https://via.placeholder.com/300x220?text=Wallet+B" alt="Wallet B" />
+                            <h3>Slim Minimalist</h3>
+                            <p class="price">$34</p>
+                            <a class="btn-secondary" href="#">View</a>
+                        </article>
+
+                        <article class="product">
+                            <img src="https://via.placeholder.com/300x220?text=Purse+C" alt="Purse C" />
+                            <h3>Elegant Purse</h3>
+                            <p class="price">$79</p>
+                            <a class="btn-secondary" href="#">View</a>
+                        </article>
+
+                        <article class="product">
+                            <img src="https://via.placeholder.com/300x220?text=Card+Case+D" alt="Card Case D" />
+                            <h3>Compact Card Case</h3>
+                            <p class="price">$24</p>
+                            <a class="btn-secondary" href="#">View</a>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="site-footer">
+            <div class="container">
+                <p>© MM Designs — Handcrafted goods</p>
+            </div>
+        </footer>
+            <script>
+                // Toggle a class on the header.nav when the page is scrolled.
+                (function(){
+                    const header = document.querySelector('.nav');
+                    if(!header) return;
+                    let ticking = false;
+                    const threshold = 20; // px scrolled before effect appears
+                    function onScroll(){
+                        if(!ticking){
+                            window.requestAnimationFrame(()=>{
+                                if(window.scrollY > threshold){
+                                    header.classList.add('scrolled');
+                                } else {
+                                    header.classList.remove('scrolled');
+                                }
+                                ticking = false;
+                            });
+                            ticking = true;
+                        }
+                    }
+                    window.addEventListener('scroll', onScroll, {passive:true});
+                    // run once on load in case the page is opened mid-scroll
+                    onScroll();
+                })();
+            </script>
+    </body>
+</html>
